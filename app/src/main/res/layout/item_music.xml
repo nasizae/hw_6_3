@@ -12,6 +12,7 @@
             android:text="musicName"
             android:textSize="26sp"
             android:textStyle="bold"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="10dp"/>

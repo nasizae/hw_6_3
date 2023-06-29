@@ -1,6 +1,7 @@
 package com.example.a6_3
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,13 +19,15 @@ class MusicViewAdapter( var musicList: ArrayList<Music>,  val onItemClick:(posit
     }
 
     override fun onBindViewHolder(holder: MusicHolder, position: Int) {
-        holder.Bind(musicList[position])
+        holder.bind(musicList[position])
     }
 
-    override fun getItemCount()=musicList.size
+    override fun getItemCount(): Int{
+        return musicList.size
+    }
 
-    inner class MusicHolder(private var binding: ItemMusicBinding) : RecyclerView.ViewHolder(binding.root) {
-            fun Bind(music: Music){
+    inner class MusicHolder(private var binding: ItemMusicBinding) : ViewHolder(binding.root) {
+            fun bind(music: Music){
                 val item=musicList[adapterPosition]
                 binding.apply {
                     tvNameMusic.text=item.nameMusic

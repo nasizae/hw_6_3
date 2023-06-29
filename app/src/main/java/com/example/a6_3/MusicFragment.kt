@@ -44,6 +44,5 @@ class MusicFragment : Fragment() {
     fun onItemClick(position:Int){
         bundle.putSerializable("txt",musicList[position])
         resultFragment.arguments=bundle
-        requireActivity().supportFragmentManager.beginTransaction().replace(R.id.container,ResultFragment()).addToBackStack(null).commit()
     }
 }
