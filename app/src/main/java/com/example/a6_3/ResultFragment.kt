@@ -23,8 +23,8 @@ class ResultFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        dataFromMusicFragment=arguments?.getSerializable("txt") as Music
         binding.apply {
-            dataFromMusicFragment=arguments?.getSerializable("txt") as Music
             tvNameMusic.text=dataFromMusicFragment.nameMusic
             tvNameAvtor.text=dataFromMusicFragment.nameAvtor
             tvTimeMusic.text=dataFromMusicFragment.timeMusic

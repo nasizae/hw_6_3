@@ -13,19 +13,9 @@ import com.example.a6_3.databinding.ItemMusicBinding
 class MusicFragment : Fragment() {
 
     private lateinit var binding: FragmentMusicBinding
-    private lateinit var musicViewAdapter: MusicViewAdapter
     private var resultFragment:ResultFragment = ResultFragment()
-    private lateinit var bundle: Bundle
-    private  var musicList= arrayListOf(Music("Pass Out","Tinie Tempah","3:57"),
-            Music("We dance on","N-Dubz","3:06"),
-            Music("Work It Out","Lighbulb Theives","3:33"),
-            Music("Tiny Dancer","Ironik","3:23"),
-            Music("Strong Again","N-Dubz","3:14"),
-            Music("Live fo the moment","Pixie Lott","2:47"),
-            Music("Candy","Aggro Santos","3:00"),
-            Music("Beggin","Madcon","3:35"),
-            Music("Champion Sound","Fatboy Slim","2:55"),
-            Music("live is Beatiful","Vega4","4:34"))
+    private  var bundle: Bundle= Bundle()
+    private  var musicList= ArrayList<Music>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -37,12 +27,29 @@ class MusicFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        musicViewAdapter= MusicViewAdapter(musicList,this::onItemClick)
+        loadData()
+        val musicViewAdapter= MusicViewAdapter(musicList,this::onItemClick)
         binding.rvMusic.adapter=musicViewAdapter
 
     }
-    fun onItemClick(position:Int){
+    private fun onItemClick(position:Int){
         bundle.putSerializable("txt",musicList[position])
         resultFragment.arguments=bundle
+        requireActivity().supportFragmentManager.beginTransaction().replace(R.id.container,resultFragment).addToBackStack(null).commit()
     }
+    private fun loadData() {
+        musicList.add(Music("Pass Out","Tinie Tempah","3:57"))
+        musicList.add(Music("We dance on","N-Dubz","3:06"))
+          musicList.add(Music("Work It Out","Lighbulb Theives","3:33"))
+            musicList.add(Music("Tiny Dancer","Ironik","3:23"))
+            musicList.add(Music("Strong Again","N-Dubz","3:14"))
+            musicList.add(Music("Live fo the moment","Pixie Lott","2:47"))
+            musicList.add(Music("Candy","Aggro Santos","3:00"))
+            musicList.add(Music("Beggin","Madcon","3:35"))
+            musicList.add(Music("Champion Sound","Fatboy Slim","2:55"))
+            musicList.add(Music("live is Beatiful","Vega4","4:34"))
+
+    }
+
+
 }

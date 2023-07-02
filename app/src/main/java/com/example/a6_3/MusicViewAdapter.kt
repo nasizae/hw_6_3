@@ -28,17 +28,17 @@ class MusicViewAdapter( var musicList: ArrayList<Music>,  val onItemClick:(posit
 
     inner class MusicHolder(private var binding: ItemMusicBinding) : ViewHolder(binding.root) {
             fun bind(music: Music){
-                val item=musicList[adapterPosition]
+
                 binding.apply {
-                    tvNameMusic.text=item.nameMusic
-                    tvNameAvtor.text=item.nameAvtor
-                    tvTimeMusic.text=item.timeMusic
+                    tvNameMusic.text=music.nameMusic
+                    tvNameAvtor.text=music.nameAvtor
+                    tvTimeMusic.text=music.timeMusic
 
                 }
                 itemView.setOnClickListener {
                     onItemClick(adapterPosition)
-
                 }
+
             }
     }
 }
